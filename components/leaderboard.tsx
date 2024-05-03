@@ -25,25 +25,26 @@ const invoices = [
     totalAmount: "60",
   },
   {
-    invoice: "soppro",
+    invoice: "wickkan",
     totalAmount: "40",
   }
 ]
 
 export function TableDemo() {
   return (
-    <Table>
+    <div className="w-full max-w-[200px] mx-auto">
+      <Table className="w-full table-fixed">
       <TableHeader>
         <TableRow>
-          <TableHead className="w-full max-w-[600px] mx-auto">Username</TableHead>
-          <TableHead className="text-right">Points</TableHead>
+          <TableHead className="w-3/4 p-1 text-left">Username</TableHead>
+          <TableHead className="w-1/4 p-1 text-right">Points</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {invoices.map((invoice) => (
           <TableRow key={invoice.invoice}>
-            <TableCell className="font-medium">{invoice.invoice}</TableCell>
-            <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+            <TableCell className="p-1 text-left font-medium">{invoice.invoice}</TableCell>
+            <TableCell className="p-1 text-right">{invoice.totalAmount}</TableCell>
           </TableRow>
         ))}
       </TableBody>
@@ -52,7 +53,8 @@ export function TableDemo() {
         </TableRow>
       </TableFooter>
     </Table>
-  )
+    </div>
+  );
 }
 
 export default TableDemo;
