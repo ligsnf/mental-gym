@@ -5,6 +5,9 @@ import {
   varchar,
 } from 'drizzle-orm/pg-core';
 
+
+//test
+
 export const users = pgTable('User', {
   id: serial('id').primaryKey(),
   email: varchar('email', { length: 64 }),
