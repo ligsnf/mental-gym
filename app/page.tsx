@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import { getUser } from '@/db/queries/users';
+import { getSession } from '@/db/queries/sessions';
 
 export default async function Page() {
-  const testUser = await getUser('crispy@fries.most')
-  console.log(testUser)
+  const ses = await getSession(2);
+  console.log(ses);
 
   return (
     <div className="flex h-screen bg-black">
