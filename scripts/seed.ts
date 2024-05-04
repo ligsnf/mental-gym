@@ -14,12 +14,12 @@ async function main() {
 //   const res = await createTask("crispy@fries.most", "Review crispy fries");
 //   console.log("create task success", res);
 
-  // const start = new Date();
-  // await createSession(7, 1, start);
+  const start = new Date();
+  await createSession(7, 1, start);
 
-  // const end = new Date();
-  // await endSession(3, end);
-  process.exit();
+  // const end = new Date(150000);
+  // await endSession(8, end);
+  // process.exit();
 
 }
 

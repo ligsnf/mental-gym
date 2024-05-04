@@ -31,11 +31,21 @@ export async function endSession(session_id: number, end_time: Date) {
 
     const { start_time } = session[0];
 
-    const durationSeconds = Math.round((end_time.getTime() - new Date(start_time).getTime()) / 1000);
-    console.log(durationSeconds);
+    const startDate = new Date(start_time);
+    const totalSeconds = Math.round(end_time.getTime() - startDate.getTime()/1000);
+
+    const hours = Math.floor(totalSeconds / 3600);
+    const remainingSecondsAfterHours = totalSeconds % 3600;
+
+    // Calculate minutes
+    const minutes = Math.floor(remainingSecondsAfterHours / 60);
+    const seconds = Math.floor(remainingSecondsAfterHours % 60);
+
+    const interval = `${hours} hours, ${minutes} minutes, ${seconds} seconds`
+
     return await db.update(sessions).set({
         end_time: end_time,
-        duration: durationSeconds
+        duration: interval
     }).where(eq(sessions.session_id, session_id));
 }
 

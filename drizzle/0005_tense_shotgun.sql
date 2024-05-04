@@ -1,1 +1,0 @@
-ALTER TABLE "Session" ALTER COLUMN "duration" SET DATA TYPE integer;
