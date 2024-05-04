@@ -1,5 +1,5 @@
 {
-  "id": "57cab877-01f3-439a-a0bc-de403b4f3877",
+  "id": "6f572371-bf53-452d-b9f3-463ef9462b0f",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -25,6 +25,13 @@
           "type": "varchar(64)",
           "primaryKey": false,
           "notNull": false
+        },
+        "total_time_spent": {
+          "name": "total_time_spent",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "default": 0
         }
       },
       "indexes": {},

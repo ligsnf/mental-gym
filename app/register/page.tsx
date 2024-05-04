@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Form } from 'app/form';
 import { redirect } from 'next/navigation';
-import { createUser, getUser } from '@/lib/db';
+import { createUser, getUser } from '@/db/queries/users';
 import { SubmitButton } from 'app/submit-button';
 
 export default function Login() {

@@ -2,7 +2,7 @@ import "@/lib/config";
 import { defineConfig } from "drizzle-kit";
 
 export default defineConfig({
-  schema: "./lib/schema.ts",
+  schema: "./db/schema/*",
   out: "./drizzle",
   driver: "pg",
   dbCredentials: {

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getUser } from '@/lib/db';
+import { getUser } from '@/db/queries/users';
 
 export default async function Page() {
   const testUser = await getUser('crispy@fries.most')
