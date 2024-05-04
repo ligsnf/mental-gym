@@ -5,17 +5,12 @@ import { eq } from 'drizzle-orm';
 
 
 // get tasks from a user's email/username
-export async function getTasks(email: string) {
-    const user = await getUser(email);
-    const userId = user[0].id;
-    return await db.select().from(tasks).where(eq(tasks.user_id, userId));
+export async function getTasks(user_id: number) {
+    return await db.select().from(tasks).where(eq(tasks.user_id, user_id));
 }
 
 
 // create task for user
-export async function createTask(email: string, title: string) {
-    const user = await getUser(email);
-    const userId = user[0].id;
-
-    return await db.insert(tasks).values({user_id : userId, task_title: title})
+export async function createTask(user_id: number, title: string) {
+    return await db.insert(tasks).values({user_id : user_id, task_title: title});
 }
