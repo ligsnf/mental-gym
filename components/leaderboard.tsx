@@ -1,5 +1,4 @@
 import { getUsers } from '@/db/queries/users';
-import { ChevronRight } from "lucide-react"
 
 import {
   Table,
@@ -32,14 +31,11 @@ export async function TableDemo() {
           ))}
         </TableBody>
         <TableFooter>
-            <Button variant="outline" size="icon" >
-              <ChevronRight className="h-4 w-4 text-right" />
-            </Button>
         </TableFooter>
       </Table>
     </div>
   );
 }
 
-export default LeaderboardTable;
+export default TableDemo;
 
