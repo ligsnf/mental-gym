@@ -8,7 +8,7 @@ export default function RootLayout({
   return (
     <>
       <TopNav />
-      <main className="container pt-4">{children}</main>
+      <main className="container pt-8">{children}</main>
     </>
   );
 }
