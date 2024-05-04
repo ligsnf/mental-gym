@@ -1,3 +1,4 @@
+// import dynamic from 'next/dynamic';
 import { auth, signOut } from 'app/auth';
 import {
   Avatar,
@@ -5,9 +6,13 @@ import {
   AvatarImage,
 } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
-import { Card } from '@tremor/react';
+import { Label } from "@/components/ui/label"
+import { Card, DateRangePicker, DateRangePickerValue } from '@tremor/react';
 import { ProgressChart } from './-components/chart';
 import { StreakTracker } from './-components/tracker';
+
+// Import the DateRangePicker dynamically and make sure it's only used client-side
+// const DateRangePicker = dynamic(() => import('./-components/date-range-picker'), { ssr: false });
 
 const trackerData = [
   { color: 'emerald', tooltip: 'May 2' },
@@ -111,6 +116,17 @@ const chartdata = [
 ];
 
 export default async function ProtectedPage() {
+  // const onDateRangeChange = (newRange: DateRangePickerValue) => {
+  //   console.log(newRange); // Or do something with this new range, like setting cookies or local storage
+  // };
+  const today = new Date();
+  const sevenDaysAgo = new Date();
+  sevenDaysAgo.setDate(today.getDate() - 7);
+  const dateRangeValue: DateRangePickerValue = {
+    from: sevenDaysAgo,
+    to: today,
+  };
+
   let session = await auth();
   let username = session?.user?.email;
 
@@ -123,7 +139,8 @@ export default async function ProtectedPage() {
   }
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-6">
+      <h2 className="text-4xl font-medium">Profile</h2>
       <div className="flex items-center gap-4">
         <Avatar className="hidden h-9 w-9 sm:flex border-2 border-slate-900 dark:border-white">
           <AvatarImage src="https://www.gravatar.com/avatar/?d=identicon" alt="Avatar" />
@@ -141,10 +158,18 @@ export default async function ProtectedPage() {
           <SignOut />
         </div>
       </div>
-      <Card className="mx-auto">
+      <div className="space-y-1">
+        <Label htmlFor="date-range-picker">Choose Date Range</Label>
+        <DateRangePicker
+          id="date-range-picker"
+          className="max-w-md"
+          value={dateRangeValue}
+        // onValueChange={setValue}
+        />
+      </div>
+      <Card>
         <StreakTracker data={trackerData} />
       </Card>
-      <h2 className="text-3xl font-medium">XP progress</h2>
       <Card>
         <ProgressChart chartdata={chartdata} valueKey='XP earned' />
       </Card>
