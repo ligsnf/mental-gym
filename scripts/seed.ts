@@ -12,7 +12,7 @@ async function main() {
   // process.exit();
 
 
-  const res = await createTask(7, "Review crispy fries");
+  const res = await createTask("obama", "Review crispy fries");
   console.log("create task success", res);
   process.exit();
 

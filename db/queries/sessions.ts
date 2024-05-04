@@ -1,11 +1,14 @@
 import { db } from "@/db/index"
 import { sessions } from '@/db/schema/session';
+import { getUserId } from '@/db/queries/users';
 import { eq } from 'drizzle-orm';
 
 
 // create session for user
-export async function getUserSessions(user_id: number) {
-    return await db.select().from(sessions).where(eq(sessions.user_id, user_id));
+export async function getUserSessions(username: string) {
+    const user = await getUserId(username);
+    const userId = user[0].id
+    return await db.select().from(sessions).where(eq(sessions.user_id, userId));
 }
 
 // gets sessions for a category
@@ -14,9 +17,12 @@ export async function getCategorySessions(category_id: number) {
 }
 
 // start/create a new session
-export async function createSession(user_id: number, category_id: number, start_time: Date) {
+export async function createSession(username: string, category_id: number, start_time: Date) {
+    const user = await getUserId(username);
+    const userId = user[0].id
+
     return await db.insert(sessions).values({
-        user_id: user_id,
+        user_id: userId,
         category_id: category_id,
         start_time: start_time,
         end_time: null,

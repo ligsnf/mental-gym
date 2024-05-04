@@ -7,6 +7,10 @@ export async function getUser(email: string) {
   return await db.select().from(users).where(eq(users.email, email));
 }
 
+export async function getUserId(email: string) {
+  return await db.select({id: users.id}).from(users).where(eq(users.email, email));
+}
+
 export async function createUser(email: string, password: string) {
   let salt = genSaltSync(10);
   let hash = hashSync(password, salt);
