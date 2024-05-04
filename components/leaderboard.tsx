@@ -1,5 +1,5 @@
 import { getUsers } from '@/db/queries/users';
-import { ChevronRight } from "lucide-react"
+import { getExperience } from '@/db/queries/experience';
 
 import {
   Table,
@@ -10,7 +10,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "@/components/ui/button"
 
 
 export async function TableDemo() {
