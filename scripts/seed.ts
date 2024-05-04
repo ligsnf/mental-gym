@@ -1,5 +1,6 @@
 import { createUser } from "@/db/queries/users";
 import { createTask } from "@/db/queries/tasks";
+import { createSession, endSession } from "@/db/queries/sessions";
 
 async function main() {
   // const newUser = {
@@ -10,9 +11,12 @@ async function main() {
   // console.log("insert user success", res);
   // process.exit();
 
+
   const res = await createTask(7, "Review crispy fries");
   console.log("create task success", res);
   process.exit();
+
 }
+
 
 main();
