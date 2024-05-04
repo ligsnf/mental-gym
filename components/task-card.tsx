@@ -15,6 +15,7 @@ const TaskCard = () => {
           <Input
             className="max-w-16"
             type="number"
+            defaultValue={0}
             value={progress.length > 0 ? progress[0] : ''}
             onChange={(e) => setProgress([Number(e.target.value)])}
           />
@@ -22,6 +23,7 @@ const TaskCard = () => {
         <Slider
           onValueChange={(percent) => setProgress(percent)}
           value={progress.length > 0 ? progress : undefined}
+          defaultValue={[0]}
           max={100}
           step={1}
         />

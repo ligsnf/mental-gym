@@ -10,7 +10,7 @@ async function main() {
   // console.log("insert user success", res);
   // process.exit();
 
-  const res = await createTask("crispy@fries.most", "Review crispy fries");
+  const res = await createTask(7, "Review crispy fries");
   console.log("create task success", res);
   process.exit();
 }
