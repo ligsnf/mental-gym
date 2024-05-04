@@ -32,7 +32,7 @@ export async function endSession(session_id: number, end_time: Date) {
     const { start_time } = session[0];
 
     const startDate = new Date(start_time);
-    const totalSeconds = Math.round(end_time.getTime() - startDate.getTime()/1000);
+    const totalSeconds = Math.round((end_time.getTime() - startDate.getTime())/1000);
 
     const hours = Math.floor(totalSeconds / 3600);
     const remainingSecondsAfterHours = totalSeconds % 3600;
@@ -40,7 +40,6 @@ export async function endSession(session_id: number, end_time: Date) {
     // Calculate minutes
     const minutes = Math.floor(remainingSecondsAfterHours / 60);
     const seconds = Math.floor(remainingSecondsAfterHours % 60);
-
     const interval = `${hours} hours, ${minutes} minutes, ${seconds} seconds`
 
     return await db.update(sessions).set({
