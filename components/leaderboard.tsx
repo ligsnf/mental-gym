@@ -1,4 +1,5 @@
 import { getUsers } from '@/db/queries/users';
+import { ChevronRight } from "lucide-react"
 
 import {
   Table,
@@ -9,29 +10,33 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Button } from "@/components/ui/button"
+
 
 export async function TableDemo() {
   const users = await getUsers(); 
 
   console.log(users)
   return (
-    <div className="w-full max-w-[500px] mx-auto">
-      <Table className="w-full table-fixed">
+    <div className="w-full max-w-[500px] mx-auto overflow-hidden">
+      <Table className="w-full table-fixed text-lg">
         <TableHeader>
           <TableRow>
-            <TableHead className="w-full p-1 text-left">Email</TableHead>
+            <TableHead className="w-1/2 p-2 text-left">Username</TableHead>
+            <TableHead className="w-1/2 p-2 text-right">Points</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
             {users.map((user, index) => (
             <TableRow key={index}>
-              <TableCell className="p-1 text-left font-medium">{user.email}</TableCell>
+              <TableCell className="p-2 text-left font-medium">{user.email}</TableCell>
             </TableRow>
           ))}
         </TableBody>
         <TableFooter>
-          <TableRow>
-          </TableRow>
+            <Button variant="outline" size="icon" >
+              <ChevronRight className="h-4 w-4 text-right" />
+            </Button>
         </TableFooter>
       </Table>
     </div>
