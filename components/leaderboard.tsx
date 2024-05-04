@@ -29,7 +29,7 @@ export async function TableDemo() {
             <TableHead className="w-1/2 p-2 text-right">Experience</TableHead>
           </TableRow>
         </TableHeader>
-        <TableBody>
+        <TableBody >
             {topTenUsers.map((user, index) => (
             <TableRow key={index}>
               <TableCell className="p-2 text-left font-medium">{user.email}</TableCell>
