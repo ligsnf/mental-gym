@@ -15,7 +15,7 @@ export async function createUser(email: string, password: string) {
 }
 
 export async function getUsers() {
-  return await db.select({email: users.email}).from(users); // Fetch only the email field
+  return await db.select({ email: users.email, total_time_spent: users.total_time_spent }).from(users);
 }
 
 
