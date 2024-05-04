@@ -14,7 +14,7 @@ export const metadata = {
     title,
     description,
   },
-  metadataBase: new URL('https://mental-gym-three.vercel.app/'),
+  metadataBase: new URL('https://mental-gym-three.vercel.app'),
 };
 
 const inter = Inter({
@@ -24,17 +24,14 @@ const inter = Inter({
 
 export default function RootLayout({
   children,
-  modal,
 }: {
   children: React.ReactNode;
-  modal: React.ReactNode;
 }) {
   return (
     <html lang="en">
       <body className={`font-sans ${inter.variable}`}>
         <div className="flex min-h-screen w-full flex-col">
         {children}
-          {modal}
         </div>
         <div id="modal-root" />
       </body>
