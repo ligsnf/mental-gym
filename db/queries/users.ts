@@ -13,3 +13,9 @@ export async function createUser(email: string, password: string) {
 
   return await db.insert(users).values({ email, password: hash });
 }
+
+export async function getUsers() {
+  return await db.select({email: users.email}).from(users); // Fetch only the email field
+}
+
+
