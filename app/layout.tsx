@@ -1,21 +1,26 @@
 import './globals.css';
 
-import { GeistSans } from 'geist/font/sans';
+import { Inter } from "next/font/google";
 
-let title = 'Next.js + Postgres Auth Starter';
-let description =
-  'This is a Next.js starter kit that uses NextAuth.js for simple email + password login and a Postgres database to persist the data.';
+let title = 'Mental Gym';
+let description = 'Elevate your study efficiency with our all-in-one student productivity platform featuring time tracking, progress graphs, and competitive leaderboards.';
 
 export const metadata = {
   title,
   description,
+  icons: [{ rel: "icon", url: "/favicon.ico" }],
   twitter: {
     card: 'summary_large_image',
     title,
     description,
   },
-  metadataBase: new URL('https://nextjs-postgres-auth.vercel.app'),
+  metadataBase: new URL('https://mental-gym-three.vercel.app'),
 };
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export default function RootLayout({
   children,
@@ -24,7 +29,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={GeistSans.variable}>{children}</body>
+      <body className={`font-sans ${inter.variable}`}>
+        <div className="flex min-h-screen w-full flex-col">
+        {children}
+        </div>
+        <div id="modal-root" />
+      </body>
     </html>
   );
 }
