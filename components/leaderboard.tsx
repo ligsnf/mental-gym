@@ -1,60 +1,47 @@
-'use client';
+import { getUsers } from '@/db/queries/users';
+import { ChevronRight } from "lucide-react"
 
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableFooter,
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
+} from "@/components/ui/table";
+import { Button } from "@/components/ui/button"
 
-const invoices = [
-  {
-    invoice: "riki",
-    totalAmount: "100",
-  },
-  {
-    invoice: "liangdi",
-    totalAmount: "80",
-  },
-  {
-    invoice: "soppro",
-    totalAmount: "60",
-  },
-  {
-    invoice: "wickkan",
-    totalAmount: "40",
-  }
-]
 
-export function TableDemo() {
+export async function TableDemo() {
+  const users = await getUsers(); 
+
+  console.log(users)
   return (
-    <div className="w-full max-w-[200px] mx-auto">
-      <Table className="w-full table-fixed">
-      <TableHeader>
-        <TableRow>
-          <TableHead className="w-3/4 p-1 text-left">Username</TableHead>
-          <TableHead className="w-1/4 p-1 text-right">Points</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {invoices.map((invoice) => (
-          <TableRow key={invoice.invoice}>
-            <TableCell className="p-1 text-left font-medium">{invoice.invoice}</TableCell>
-            <TableCell className="p-1 text-right">{invoice.totalAmount}</TableCell>
+    <div className="w-full max-w-[500px] mx-auto overflow-hidden">
+      <Table className="w-full table-fixed text-lg">
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-1/2 p-2 text-left">Username</TableHead>
+            <TableHead className="w-1/2 p-2 text-right">Points</TableHead>
           </TableRow>
-        ))}
-      </TableBody>
-      <TableFooter>
-        <TableRow>
-        </TableRow>
-      </TableFooter>
-    </Table>
+        </TableHeader>
+        <TableBody>
+            {users.map((user, index) => (
+            <TableRow key={index}>
+              <TableCell className="p-2 text-left font-medium">{user.email}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+        <TableFooter>
+            <Button variant="outline" size="icon" >
+              <ChevronRight className="h-4 w-4 text-right" />
+            </Button>
+        </TableFooter>
+      </Table>
     </div>
   );
 }
 
 export default TableDemo;
+
