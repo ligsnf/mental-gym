@@ -1,10 +1,6 @@
 import Link from 'next/link';
-import { getUser } from '@/db/queries/users';
 
 export default async function Page() {
-  const testUser = await getUser('crispy@fries.most')
-  console.log(testUser)
-
   return (
     <div className="flex h-screen bg-black">
       <div className="w-screen h-screen flex flex-col justify-center items-center">
