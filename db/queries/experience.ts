@@ -4,7 +4,7 @@ import { SQLWrapper, eq } from 'drizzle-orm';
 
 
 // get experience from user
-export async function getExperience(user_id: number | SQLWrapper) {
+export async function getExperience() {
     return await db.select().from(experiences).where(eq(experiences.user_id, user_id))
 }
 
