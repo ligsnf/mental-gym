@@ -24,10 +24,30 @@ export async function createSession(user_id: number, category_id: number, start_
     });
 }
 
-// im not sure about the duration for this tbh
-export async function endSession(session_id: number, duration: string, end_time: Date) {
+export async function endSession(session_id: number, end_time: Date) {
+    const session = await db.select({
+        start_time: sessions.start_time
+    }).from(sessions).where(eq(sessions.session_id, session_id)).limit(1);
+
+    const { start_time } = session[0];
+
+    const startDate = new Date(start_time);
+    const totalSeconds = Math.round((end_time.getTime() - startDate.getTime())/1000);
+
+    const hours = Math.floor(totalSeconds / 3600);
+    const remainingSecondsAfterHours = totalSeconds % 3600;
+
+    // Calculate minutes
+    const minutes = Math.floor(remainingSecondsAfterHours / 60);
+    const seconds = Math.floor(remainingSecondsAfterHours % 60);
+    const interval = `${hours} hours, ${minutes} minutes, ${seconds} seconds`
+
     return await db.update(sessions).set({
         end_time: end_time,
-        duration: duration
+        duration: interval
     }).where(eq(sessions.session_id, session_id));
+}
+
+export async function getSession(session_id: number) {
+    return await db.select({duration: sessions.duration}).from(sessions).where(eq(sessions.session_id, session_id));
 }
