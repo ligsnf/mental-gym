@@ -1,4 +1,5 @@
 import { getUsers } from '@/db/queries/users';
+import { getExperience } from '@/db/queries/experience';
 import bronzeMedal from '@/public/images/medals/bronze.svg';
 import goldMedal from '@/public/images/medals/gold.svg';
 import silverMedal from '@/public/images/medals/silver.svg';
