@@ -4,6 +4,7 @@ import Image from "next/image";
 import goldMedal from "@/public/images/medals/gold.svg";
 import silverMedal from "@/public/images/medals/silver.svg";
 import bronzeMedal from "@/public/images/medals/bronze.svg";
+import { getExperience } from '@/db/queries/experience';
 
 import {
   Avatar,
