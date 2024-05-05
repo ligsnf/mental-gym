@@ -48,7 +48,7 @@ function LockIn() {
 
   return (
     <Card>
-      <Select
+{/*       <Select
         onValueChange={(newValue) => setValueKey(newValue)}
         defaultValue={valueKey}
       >
@@ -64,7 +64,16 @@ function LockIn() {
               ))}
             </SelectGroup>
           </SelectContent>
-      </Select>
+      </Select> */}
+      <SelectContent>
+          <SelectGroup>
+            <SelectItem value="general">General</SelectItem>
+            <SelectItem value="FIT2004">FIT2004</SelectItem>
+            <SelectItem value="FIT2014">FIT2014</SelectItem>
+            <SelectItem value="FIT4165">FIT4165</SelectItem>
+            <SelectItem value="FIT5145">FIT5145</SelectItem>
+          </SelectGroup>
+        </SelectContent>
       <div className="flex justify-between gap-3 pt-4">
         <Card className="md:h-24 md:text-5xl h-18 text-3xl font-semibold">
           <Stopwatch
