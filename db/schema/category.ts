@@ -10,6 +10,6 @@ import {
 
 export const categories = pgTable('Category', {
     category_id: serial('category_id').primaryKey(),
-    user_id: integer('user_id').references(() => users.id),
-    title: varchar('title', { length: 64}),
+    user_id: integer('user_id').references(() => users.id).notNull(),
+    title: varchar('title', { length: 64}).notNull(),
 })
