@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Card } from '@tremor/react';
 import { Input } from './ui/input';
 import { Slider } from './ui/slider';
 
@@ -8,7 +9,7 @@ const TaskCard = () => {
   const [progress, setProgress] = useState<number[]>([]);
 
   return (
-    <div className="p-4 border rounded-sm">
+    <Card>
       <div className="flex flex-col gap-4">
         <div className="flex gap-2">
           <Input placeholder="New task ..." />
@@ -28,7 +29,7 @@ const TaskCard = () => {
           step={1}
         />
       </div>
-    </div>
+    </Card>
   );
 };
 

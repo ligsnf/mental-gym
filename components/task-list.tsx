@@ -5,7 +5,7 @@ import TaskCard from './task-card';
 import { Button } from './ui/button';
 
 const TaskList = () => {
-  const [numOfTasks, setNumOfTasks] = useState(0);
+  const [numOfTasks, setNumOfTasks] = useState(1);
 
   return (
     <div className="flex flex-col gap-2">
