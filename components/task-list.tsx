@@ -10,18 +10,28 @@ interface TaskListProps {
 }
 
 const TaskList = ({ tasks }: TaskListProps) => {
-  const [numOfTasks, setNumOfTasks] = useState(1);
-
-  const handleAddTask = () => {
-    setNumOfTasks((numOfTasks) => numOfTasks + 1);
-  };
+  const [numOfLocalTasks, setNumOfLocalTasks] = useState(0);
 
   return (
     <div className="flex flex-col gap-2">
-      {tasks.map(({ task_id, task_title }) => (
-        <TaskCard key={task_id} title={task_title} />
+      {tasks.map(({ task_id, task_title, progress }) => (
+        <TaskCard
+          key={task_id}
+          taskId={task_id}
+          title={task_title}
+          progress={progress}
+        />
       ))}
-      <Button onClick={handleAddTask}>Add task</Button>
+      {Array(numOfLocalTasks)
+        .fill(0)
+        .map((_, index) => (
+          <TaskCard key={index} />
+        ))}
+      <Button
+        onClick={() => setNumOfLocalTasks((numOfTasks) => numOfTasks + 1)}
+      >
+        Add task
+      </Button>
     </div>
   );
 };

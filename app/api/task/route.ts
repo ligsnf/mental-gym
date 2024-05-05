@@ -1,5 +1,5 @@
 import { auth } from '@/app/auth';
-import { createTask } from '@/db/queries/tasks';
+import { createTask, editTask } from '@/db/queries/tasks';
 
 export async function GET(request: Request) {
   const session = await auth();
@@ -21,17 +21,18 @@ export async function POST(request: Request) {
   // Read body contents
   try {
     const body = await request.json();
-    const { task, title } = body;
-    if (!title) {
+    const { taskId, title, progress } = body;
+    if (!title || !progress) {
       throw new Error('bad request');
     }
 
     try {
       const username = session.user?.email;
-      if (task) {
-        // TODO: If task ID provided, edit task
+      if (taskId) {
+        // If task ID provided, edit task
+        await editTask(username || '', taskId, title, progress);
       } else {
-        // TODO: If no task ID, create task
+        // If no task ID, create task
         await createTask(username || '', title);
       }
       return new Response();
