@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Form } from 'app/form';
 import { signIn } from 'app/auth';
 import { SubmitButton } from 'app/submit-button';
+import { redirect } from 'next/navigation';
 
 export default function Login() {
   return (
@@ -16,11 +17,16 @@ export default function Login() {
         <Form
           action={async (formData: FormData) => {
             'use server';
-            await signIn('credentials', {
-              redirectTo: '/app',
-              email: formData.get('email') as string,
-              password: formData.get('password') as string,
-            });
+            try {
+              await signIn('credentials', {
+                email: formData.get('email') as string,
+                password: formData.get('password') as string,
+                redirect: false, // Disabling auto-redirect
+              });
+            } catch (error) {
+              console.error("Sign in failed, check your credentials and try again");
+            }
+            redirect('/app'); // Manually redirect if no error
           }}
         >
           <SubmitButton>Sign in</SubmitButton>
