@@ -29,14 +29,11 @@ function LockIn() {
   const [categories, setCategories] = useState<Category[]>([]);
 
 
-  // let session = await();
-  // const testUserName = "crispy";
-
       // Fetch categories from the API route
   useEffect(() => {
     async function fetchCategories() {
         try {
-            const response = await fetch(`/api/get-categories?username=crispy`);
+            const response = await fetch(`/api/category/?username=crispy`);
             const data: Category[] = await response.json();
             console.log("CATEGORIES", data)
             setCategories(data);
