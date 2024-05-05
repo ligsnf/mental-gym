@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from 'react';
+import Stopwatch from '@/components/stopwatch';
 import { Button } from '@/components/ui/button';
 import {
   Select,
@@ -9,20 +9,21 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import Stopwatch from '@/components/stopwatch';
+} from '@/components/ui/select';
+import { Card } from '@tremor/react';
+import { useState } from 'react';
 
 function LockIn() {
   const [valueKey, setValueKey] = useState('general');
   const [currentlyLockedIn, setCurrentlyLockedIn] = useState(false);
 
   return (
-    <div className="flex justify-between">
+    <Card>
       <Select
         onValueChange={(newValue) => setValueKey(newValue)}
         defaultValue={valueKey}
       >
-        <SelectTrigger className="h-24 w-60 px-8 text-3xl font-semibold">
+        <SelectTrigger className="">
           <SelectValue placeholder="general" />
         </SelectTrigger>
         <SelectContent>
@@ -35,25 +36,30 @@ function LockIn() {
           </SelectGroup>
         </SelectContent>
       </Select>
-      <div className="h-24 text-7xl font-semibold">
-        <Stopwatch isRunning={currentlyLockedIn} onToggleRunning={setCurrentlyLockedIn} />
+      <div className="flex justify-between gap-3 pt-4">
+        <Card className="md:h-24 md:text-5xl h-18 text-3xl font-semibold">
+          <Stopwatch
+            isRunning={currentlyLockedIn}
+            onToggleRunning={setCurrentlyLockedIn}
+          />
+        </Card>
+        {currentlyLockedIn ? (
+          <Button
+            className="md:h-24 md:px-32 md:text-3xl h-18 w-1/2 px-24 text-2xl bg-red-500 text-slate-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-slate-50 dark:hover:bg-red-900/90"
+            onClick={() => setCurrentlyLockedIn(false)}
+          >
+            STOP 😫
+          </Button>
+        ) : (
+          <Button
+            className="md:h-24 md:px-32 md:text-3xl h-18 w-1/2 px-24 text-2xl bg-violet-500 text-slate-50 hover:bg-violet-500/90 dark:bg-violet-900 dark:text-slate-50 dark:hover:bg-violet-900/90"
+            onClick={() => setCurrentlyLockedIn(true)}
+          >
+            LOCK-IN 🗿
+          </Button>
+        )}
       </div>
-      {currentlyLockedIn ? (
-        <Button
-          className="h-24 w-44 px-32 text-3xl bg-red-500 text-slate-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-slate-50 dark:hover:bg-red-900/90"
-          onClick={() => setCurrentlyLockedIn(false)}
-        >
-          STOP 😫
-        </Button>
-      ) : (
-        <Button
-          className="h-24 w-44 px-32 text-3xl bg-violet-500 text-slate-50 hover:bg-violet-500/90 dark:bg-violet-900 dark:text-slate-50 dark:hover:bg-violet-900/90"
-          onClick={() => setCurrentlyLockedIn(true)}
-        >
-          LOCK-IN 🗿
-        </Button>
-      )}
-    </div>
+    </Card>
   );
 }
 
