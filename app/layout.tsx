@@ -1,6 +1,8 @@
 import './globals.css';
 
 import { Inter } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster } from "@/components/ui/sonner";
 
 let title = 'Mental Gym';
 let description = 'Elevate your study efficiency with our all-in-one student productivity platform featuring time tracking, progress graphs, and competitive leaderboards.';
@@ -30,10 +32,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans ${inter.variable}`}>
-        <div className="flex min-h-screen w-full flex-col">
-        {children}
-        </div>
-        <div id="modal-root" />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="flex min-h-screen w-full flex-col">
+            {children}
+            <Toaster richColors closeButton />
+          </div>
+          <div id="modal-root" />
+        </ThemeProvider>
       </body>
     </html>
   );
