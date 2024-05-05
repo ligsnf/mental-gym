@@ -1,18 +1,39 @@
 'use client';
 
-import { useState } from 'react';
 import { Card } from '@tremor/react';
+import { useState } from 'react';
 import { Input } from './ui/input';
 import { Slider } from './ui/slider';
 
-const TaskCard = () => {
+interface TaskCardProps {
+  title?: string;
+  progress?: number;
+}
+
+const TaskCard = ({ title }: TaskCardProps) => {
   const [progress, setProgress] = useState<number[]>([]);
+
+  const createTask = async (title: string) => {
+    fetch('/api/task', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title,
+      }),
+    });
+  };
 
   return (
     <Card>
       <div className="flex flex-col gap-4">
         <div className="flex gap-2">
-          <Input placeholder="New task ..." />
+          <Input
+            placeholder="New task ..."
+            value={title}
+            onBlur={(e) => createTask(e.target.value)}
+          />
           <Input
             className="max-w-16"
             type="number"
