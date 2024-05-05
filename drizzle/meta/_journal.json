@@ -15,6 +15,20 @@
       "when": 1714823997194,
       "tag": "0001_sloppy_fallen_one",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1714887406030,
+      "tag": "0002_friendly_nehzno",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1714896430121,
+      "tag": "0003_brief_spyke",
+      "breakpoints": true
     }
   ]
 }

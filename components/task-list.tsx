@@ -1,26 +1,35 @@
 'use client';
 
+import { getTasks } from '@/db/queries/tasks';
 import { useState } from 'react';
-import { toast } from "sonner";
 import TaskCard from './task-card';
 import { Button } from './ui/button';
 
-const TaskList = () => {
-  const [numOfTasks, setNumOfTasks] = useState(1);
+interface TaskListProps {
+  tasks: Awaited<ReturnType<typeof getTasks>>;
+}
 
-  const handleAddTask = () => {
-    setNumOfTasks((numOfTasks) => numOfTasks + 1);
-    toast.success("Task added");
-  };
+const TaskList = ({ tasks }: TaskListProps) => {
+  const [numOfLocalTasks, setNumOfLocalTasks] = useState(0);
 
   return (
     <div className="flex flex-col gap-2">
-      {Array(numOfTasks)
+      {tasks.map(({ task_id, task_title, progress }) => (
+        <TaskCard
+          key={task_id}
+          taskId={task_id}
+          title={task_title}
+          progress={progress}
+        />
+      ))}
+      {Array(numOfLocalTasks)
         .fill(0)
         .map((_, index) => (
           <TaskCard key={index} />
         ))}
-      <Button onClick={handleAddTask}>
+      <Button
+        onClick={() => setNumOfLocalTasks((numOfTasks) => numOfTasks + 1)}
+      >
         Add task
       </Button>
     </div>
