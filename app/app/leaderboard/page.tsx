@@ -16,7 +16,7 @@ const LeaderboardPage = () => {
         <div className="flex justify-between items-center gap-4">
           <h2 className="text-3xl font-bold tracking-tight">Leaderboard</h2>
           <Select>
-            <SelectTrigger>
+            <SelectTrigger className="max-w-36">
               <SelectValue placeholder="Global" />
             </SelectTrigger>
             <SelectContent>

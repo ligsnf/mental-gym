@@ -16,8 +16,8 @@ export default async function ProtectedPage() {
   }
 
   return (
-    <div className="flex flex-col gap-6">
-      <h2 className="text-4xl font-medium">Profile</h2>
+    <div className="m-auto max-w-xl flex flex-col gap-6">
+      <h2 className="text-3xl font-bold tracking-tight">Profile</h2>
       <div className="flex items-center gap-4">
         <Avatar className="hidden h-9 w-9 sm:flex border-2 border-slate-900 dark:border-white">
           <AvatarImage
