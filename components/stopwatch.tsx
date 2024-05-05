@@ -31,14 +31,14 @@ function Stopwatch({ isRunning, onToggleRunning }: StopwatchProps) {
     let hours = Math.floor(elapsedTime / (1000 * 60 * 60));
     let minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
     let seconds = Math.floor((elapsedTime / 1000) % 60);
-    let milliseconds = Math.floor((elapsedTime % 1000) / 10);
+    // let milliseconds = Math.floor((elapsedTime % 1000) / 10);
 
-    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}.${String(milliseconds).padStart(2, '0')}`;
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
   }
 
   return (
-    <div className="stopwatch flex items-center content-center h-full">
-      <div className="display font-mono">{formatTime()}</div>
+    <div className="stopwatch h-full flex items-center justify-center"> {/* Flex container with centering */}
+      <div className="display font-mono w-full text-center">{formatTime()}</div> {/* Text centering */}
     </div>
   );
 }
