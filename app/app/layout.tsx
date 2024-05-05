@@ -1,4 +1,4 @@
-import { TopNav } from "@/components/top-nav";
+import { TopNav } from '@/components/top-nav';
 
 export default function RootLayout({
   children,
@@ -8,7 +8,7 @@ export default function RootLayout({
   return (
     <>
       <TopNav />
-      <main className="container pt-8">{children}</main>
+      <main className="p-4">{children}</main>
     </>
   );
 }
