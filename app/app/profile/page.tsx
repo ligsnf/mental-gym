@@ -44,75 +44,38 @@ const trackerData = [
   { color: 'rose', tooltip: 'May 28' },
   { color: 'emerald', tooltip: 'May 29' },
   { color: 'emerald', tooltip: 'May 30' },
-  { color: 'rose', tooltip: 'May 31' },
-  { color: 'emerald', tooltip: 'Jun 1' },
-  { color: 'emerald', tooltip: 'Jun 2' },
-  { color: 'emerald', tooltip: 'Jun 3' },
-  { color: 'emerald', tooltip: 'Jun 4' },
-  { color: 'emerald', tooltip: 'Jun 5' },
-  { color: 'emerald', tooltip: 'Jun 6' },
-  { color: 'emerald', tooltip: 'Jun 7' },
-  { color: 'emerald', tooltip: 'Jun 8' },
-  { color: 'emerald', tooltip: 'Jun 9' },
-  { color: 'rose', tooltip: 'Jun 10' },
-  { color: 'emerald', tooltip: 'Jun 11' },
-  { color: 'rose', tooltip: 'Jun 12' },
-  { color: 'emerald', tooltip: 'Jun 13' },
-  { color: 'emerald', tooltip: 'Jun 14' },
-  { color: 'emerald', tooltip: 'Jun 15' },
-  { color: 'emerald', tooltip: 'Jun 16' },
-  { color: 'rose', tooltip: 'Jun 17' },
 ];
 
 const chartdata = [
-  {
-    date: 'Jan 22',
-    'XP earned': 2338,
-  },
-  {
-    date: 'Feb 22',
-    'XP earned': 2103,
-  },
-  {
-    date: 'Mar 22',
-    'XP earned': 2194,
-  },
-  {
-    date: 'Apr 22',
-    'XP earned': 2108,
-  },
-  {
-    date: 'May 22',
-    'XP earned': 1812,
-  },
-  {
-    date: 'Jun 22',
-    'XP earned': 1726,
-  },
-  {
-    date: 'Jul 22',
-    'XP earned': 1982,
-  },
-  {
-    date: 'Aug 22',
-    'XP earned': 2012,
-  },
-  {
-    date: 'Sep 22',
-    'XP earned': 2342,
-  },
-  {
-    date: 'Oct 22',
-    'XP earned': 2473,
-  },
-  {
-    date: 'Nov 22',
-    'XP earned': 3848,
-  },
-  {
-    date: 'Dec 22',
-    'XP earned': 3736,
-  },
+  { date: 'May 2', 'XP earned': 23, },
+  { date: 'May 3', 'XP earned': 38, },
+  { date: 'May 4', 'XP earned': 21, },
+  { date: 'May 5', 'XP earned': 94, },
+  { date: 'May 6', 'XP earned': 18, },
+  { date: 'May 7', 'XP earned': 26, },
+  { date: 'May 8', 'XP earned': 19, },
+  { date: 'May 9', 'XP earned': 12, },
+  { date: 'May 10', 'XP earned': 42, },
+  { date: 'May 11', 'XP earned': 73, },
+  { date: 'May 12', 'XP earned': 48, },
+  { date: 'May 13', 'XP earned': 37, },
+  { date: 'May 14', 'XP earned': 29, },
+  { date: 'May 15', 'XP earned': 22, },
+  { date: 'May 16', 'XP earned': 19, },
+  { date: 'May 17', 'XP earned': 24, },
+  { date: 'May 18', 'XP earned': 31, },
+  { date: 'May 19', 'XP earned': 28, },
+  { date: 'May 20', 'XP earned': 17, },
+  { date: 'May 21', 'XP earned': 23, },
+  { date: 'May 22', 'XP earned': 19, },
+  { date: 'May 23', 'XP earned': 27, },
+  { date: 'May 24', 'XP earned': 32, },
+  { date: 'May 25', 'XP earned': 28, },
+  { date: 'May 26', 'XP earned': 21, },
+  { date: 'May 27', 'XP earned': 18, },
+  { date: 'May 28', 'XP earned': 24, },
+  { date: 'May 29', 'XP earned': 31, },
+  { date: 'May 30', 'XP earned': 29, },
 ];
 
 export default async function ProtectedPage() {
@@ -171,7 +134,7 @@ export default async function ProtectedPage() {
         <StreakTracker data={trackerData} />
       </Card>
       <Card>
-        <ProgressChart chartdata={chartdata} valueKey='XP earned' />
+        <ProgressChart chartdata={chartdata} />
       </Card>
     </div>
   );
