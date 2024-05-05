@@ -29,17 +29,17 @@ function LockIn() {
   const [categories, setCategories] = useState<Category[]>([]);
 
 
-      // Fetch categories from the API route
+  // Fetch categories from the API route
   useEffect(() => {
     async function fetchCategories() {
-        try {
-            const response = await fetch(`/api/category/?username=crispy`);
-            const data: Category[] = await response.json();
-            console.log("CATEGORIES", data)
-            setCategories(data);
-        } catch (error) {
-            console.error('Failed to fetch categories:', error);
-        }
+      try {
+        const response = await fetch(`/api/category/?username=crispy`);
+        const data: Category[] = await response.json();
+        console.log("CATEGORIES", data)
+        setCategories(data);
+      } catch (error) {
+        console.error('Failed to fetch categories:', error);
+      }
     }
 
     fetchCategories();
@@ -48,7 +48,7 @@ function LockIn() {
 
   return (
     <Card>
-{/*       <Select
+      {/*       <Select
         onValueChange={(newValue) => setValueKey(newValue)}
         defaultValue={valueKey}
       >
@@ -65,7 +65,11 @@ function LockIn() {
             </SelectGroup>
           </SelectContent>
       </Select> */}
-      <SelectContent>
+      <Select>
+        <SelectTrigger className="">
+          <SelectValue placeholder="General" />
+        </SelectTrigger>
+        <SelectContent>
           <SelectGroup>
             <SelectItem value="general">General</SelectItem>
             <SelectItem value="FIT2004">FIT2004</SelectItem>
@@ -74,6 +78,7 @@ function LockIn() {
             <SelectItem value="FIT5145">FIT5145</SelectItem>
           </SelectGroup>
         </SelectContent>
+      </Select>
       <div className="flex justify-between gap-3 pt-4">
         <Card className="md:h-24 md:text-5xl h-18 text-3xl font-semibold">
           <Stopwatch
