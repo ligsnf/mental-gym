@@ -4,8 +4,10 @@ import { Label } from '@/components/ui/label';
 import { Card, DateRangePicker, DateRangePickerValue } from '@tremor/react';
 import { ProgressChart } from './chart';
 import { StreakTracker } from './tracker';
+import { useState } from 'react';
 
 const trackerData = [
+  { color: 'rose', tooltip: 'May 1' },
   { color: 'emerald', tooltip: 'May 2' },
   { color: 'rose', tooltip: 'May 3' },
   { color: 'emerald', tooltip: 'May 4' },
@@ -35,27 +37,10 @@ const trackerData = [
   { color: 'rose', tooltip: 'May 28' },
   { color: 'emerald', tooltip: 'May 29' },
   { color: 'emerald', tooltip: 'May 30' },
-  { color: 'rose', tooltip: 'May 31' },
-  { color: 'emerald', tooltip: 'Jun 1' },
-  { color: 'emerald', tooltip: 'Jun 2' },
-  { color: 'emerald', tooltip: 'Jun 3' },
-  { color: 'emerald', tooltip: 'Jun 4' },
-  { color: 'emerald', tooltip: 'Jun 5' },
-  { color: 'emerald', tooltip: 'Jun 6' },
-  { color: 'emerald', tooltip: 'Jun 7' },
-  { color: 'emerald', tooltip: 'Jun 8' },
-  { color: 'emerald', tooltip: 'Jun 9' },
-  { color: 'rose', tooltip: 'Jun 10' },
-  { color: 'emerald', tooltip: 'Jun 11' },
-  { color: 'rose', tooltip: 'Jun 12' },
-  { color: 'emerald', tooltip: 'Jun 13' },
-  { color: 'emerald', tooltip: 'Jun 14' },
-  { color: 'emerald', tooltip: 'Jun 15' },
-  { color: 'emerald', tooltip: 'Jun 16' },
-  { color: 'rose', tooltip: 'Jun 17' },
 ];
 
 const chartdata = [
+  { date: 'May 1', 'XP earned': 43 },
   { date: 'May 2', 'XP earned': 23 },
   { date: 'May 3', 'XP earned': 38 },
   { date: 'May 4', 'XP earned': 21 },
@@ -88,16 +73,13 @@ const chartdata = [
 ];
 
 const PointsDashboard = () => {
-  // const onDateRangeChange = (newRange: DateRangePickerValue) => {
-  //   console.log(newRange); // Or do something with this new range, like setting cookies or local storage
-  // };
   const today = new Date();
-  const sevenDaysAgo = new Date();
-  sevenDaysAgo.setDate(today.getDate() - 7);
-  const dateRangeValue: DateRangePickerValue = {
-    from: sevenDaysAgo,
+  const thirtyDaysAgo = new Date();
+  thirtyDaysAgo.setDate(today.getDate() - 30);
+  const [dateRangeValue, setdateRangeValue] = useState<DateRangePickerValue>({
+    from: thirtyDaysAgo,
     to: today,
-  };
+  });
 
   return (
     <>
@@ -107,7 +89,7 @@ const PointsDashboard = () => {
           id="date-range-picker"
           className="max-w-md"
           value={dateRangeValue}
-          // onValueChange={setValue}
+          onValueChange={setdateRangeValue}
         />
       </div>
       <Card>
