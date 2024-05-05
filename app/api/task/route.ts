@@ -22,7 +22,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const { taskId, title, progress } = body;
-    if (!title || !progress) {
+    if (!title || progress === undefined) {
       throw new Error('bad request');
     }
 
