@@ -1,5 +1,6 @@
 'use client';
 
+import { ModeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useActivePath } from '@/lib/helper';
@@ -21,7 +22,7 @@ export function TopNav() {
   const checkActivePath = useActivePath();
 
   return (
-    <header className="sticky top-0 border-b bg-background px-4 md:px-6">
+    <header className="sticky top-0 border-b bg-background px-4 md:px-6 z-50">
       <div className="flex h-16 items-center gap-4 ">
         <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
           <Link
@@ -86,6 +87,7 @@ export function TopNav() {
           </SheetContent>
         </Sheet>
         <div className="flex w-full justify-end items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
+          <ModeToggle />
           <Link href="/app/profile" passHref>
             <Button variant="secondary" size="icon" className="rounded-full">
               <CircleUser className="h-5 w-5" />
